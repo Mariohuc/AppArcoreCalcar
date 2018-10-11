@@ -395,6 +395,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Codelab\Prefabs\Models\VertexColorShader.shader" />
+    <None Include="Assets\CreatingGraphs\Shader\ColoredPoint.shader" />
     <None Include="Assets\GoogleARCore\Editor\ARCoreiOSDependencies.template" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileDiffuseWithLightEstimation.shader" />
     <None Include="Assets\GoogleARCore\Examples\Common\Materials\Shaders\MobileSpecularWithLightEstimation.shader" />

@@ -10,6 +10,8 @@ public class Graph : MonoBehaviour {
 	[Range (10,100)] public int resolution = 10;
 	private Transform[] points = null;
 
+	public GraphFunctionName function;
+
 	void Awake()
 	{
 		bool conAnimacion = true;
@@ -24,11 +26,16 @@ public class Graph : MonoBehaviour {
 		if (conAnimacion)
 		{
 			
-			points = new Transform[resolution];
-			for (int i = 0; i < points.Length; i++)
+			points = new Transform[resolution*resolution];
+			for (int i = 0, x = 0, z = 0; i < points.Length; i++, x++)
 			{
+				if (x == resolution) {
+					x = 0;
+					z += 1;
+				} // cuando x es igual a resolution se vuelve a cero
 				Transform point = Instantiate(pointPrefab);
-				position.x = ((i + 0.5f) * step - 1f);
+				position.x = ((x + 0.5f) * step - 1f);
+				position.z = ((z + 0.5f) * step - 1f);
 				//position.y = position.x; // function y = f(x) => f(x) = x
 				//position.y = position.x * position.x; // function y = f(x) => f(x) = x^2
 				//position.y = position.x * position.x * position.x; // function y = f(x) => f(x) = x^3
@@ -57,8 +64,6 @@ public class Graph : MonoBehaviour {
 
 	}
 
-
-
 	void Start () {
 		
 	}
@@ -66,21 +71,23 @@ public class Graph : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float t = Time.time;
+		GraphFunction f = functionslist[(int)function];
+
 		for(int i = 0 ; i < points.Length; i++) {
 			Transform point = points[i];
 			Vector3 position = point.localPosition;
 			//position.y = position.x * position.x;
 			//position.y = SineFunction( position.x , t);
-			position.y = MultiSineFunction(position.x, t);
+			position.y = f(position.x, position.z ,  t); // add the Z dimension
 			point.localPosition = position;
 		}
 	}
 
-	static float SineFunction(float x, float t) {
+	public static float SineFunction(float x, float z, float t) {
 		return Mathf.Sin(Mathf.PI * (x + t));
 	}
 
-	static float MultiSineFunction(float x, float t)
+	public static float MultiSineFunction(float x, float z, float t)
 	{
 		float y = Mathf.Sin(Mathf.PI * (x + t));
 		y += Mathf.Sin(2f * Mathf.PI * (x + t)) / 2f;
@@ -88,5 +95,8 @@ public class Graph : MonoBehaviour {
 		return y;
 
 	}
-	
+
+	//Array de delegados
+	public static GraphFunction[] functionslist = { SineFunction, MultiSineFunction };
+
 }

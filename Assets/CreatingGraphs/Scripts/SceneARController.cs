@@ -5,7 +5,7 @@ using UnityEngine;
 using CreatingGraphs;
 
 
-public class GraphARController : MonoBehaviour {
+public class SceneARController : MonoBehaviour {
 
 	/// <summary>
 	/// The first-person camera being used to render the passthrough camera image (i.e. AR background).

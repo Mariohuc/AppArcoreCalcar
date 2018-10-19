@@ -47,8 +47,6 @@ namespace CreatingGraphs
 			{
 				r.enabled = false;
 			}
-
-
 		}
 
 		void Start()

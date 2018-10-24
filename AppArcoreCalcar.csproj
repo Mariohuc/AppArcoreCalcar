@@ -310,6 +310,7 @@
     <Compile Include="Assets\Codelab\Scripts\Slithering.cs" />
     <Compile Include="Assets\ConoGraphController.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\Graph.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\GraphAR.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\GraphFunction.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\GraphFunctionName.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\SceneARController.cs" />

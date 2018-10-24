@@ -4,6 +4,7 @@ C:/Users/mariohc/Documents/ARCoreApp01/GraphARViewer.apk
 SceneListBegin?
 Assets/CreatingGraphs/Scenes/GraphARViewer.unity
 SceneListEnd?
+f1348996786ad98deb7897b12ff7611f Assembly-CSharp.dll:.SceneARController
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.PlaneRenderer
 c422dd62785a6d0afa870fbd111886ce Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 7b803eb2910e9b4cd5e521ae07b9f7d6 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -190,4 +191,4 @@ e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 2f9af06a78208a67db480e9bfed4a076 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 9318334b30e9f195f573b2ce00154b95 Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 93307bd34e39d73fd24e00ec39c25a91 Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
-da5302d9be08dc7a32919fc04e6ce398 Assembly-CSharp.dll:.GraphARController
+3483a0db695d3d351e53d93c3dfbd924 Assembly-CSharp.dll:CreatingGraphs.GraphAR

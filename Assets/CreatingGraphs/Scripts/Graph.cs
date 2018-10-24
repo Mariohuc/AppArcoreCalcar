@@ -43,10 +43,10 @@ namespace CreatingGraphs
 				}
 			}
 
-			foreach (Renderer r in GetComponentsInChildren<Renderer>())
-			{
-				r.enabled = false;
-			}
+			//foreach (Renderer r in GetComponentsInChildren<Renderer>())
+			//{
+			//	r.enabled = false;
+			//}
 		}
 
 		void Start()
@@ -55,7 +55,7 @@ namespace CreatingGraphs
 		}
 
 		// Update is called once per frame
-		/*
+		
 		void Update() {
 			float t = Time.time;
 			GraphFunction f = functionslist[(int)function];
@@ -67,7 +67,7 @@ namespace CreatingGraphs
 				point.localPosition = position;
 			}
 		}
-		*/
+		
 		public Transform CreateSurface()
 		{
 			float t = Time.time;

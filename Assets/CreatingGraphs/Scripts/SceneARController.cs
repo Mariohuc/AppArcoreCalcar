@@ -27,7 +27,7 @@ public class SceneARController : MonoBehaviour {
 	/// </summary>
 	//public GameObject AndyPointPrefab;
 
-	public Graph graphs;
+	public GraphAR graphs;
 
 	/// <summary>
 	/// A gameobject parenting UI for displaying the "searching for planes" snackbar.
@@ -107,8 +107,10 @@ public class SceneARController : MonoBehaviour {
 				//}
 
 				// Instantiate Andy model at the hit pose.
-				//var andyObject = Instantiate(prefab, hit.Pose.position, hit.Pose.rotation);
-				var graphOject = graphs.CreateSurface();
+				//var andyObject = Instantiate(graphs, hit.Pose.position, hit.Pose.rotation);
+				var graphOject = graphs.ShowSurface();
+				graphOject.position = hit.Pose.position;
+				graphOject.rotation = hit.Pose.rotation;
 
 				// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
 				graphOject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);

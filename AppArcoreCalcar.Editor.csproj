@@ -357,6 +357,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="AppArcoreCalcar.Plugins.csproj">
+      <Project>{54EB4795-60FC-DD0B-EEFD-4FD56A803905}</Project>
+      <Name>AppArcoreCalcar.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="AppArcoreCalcar.csproj">
       <Project>{499E3A6B-E010-C88F-38BE-D598BFCBAF36}</Project>
       <Name>AppArcoreCalcar</Name>

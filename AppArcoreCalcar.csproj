@@ -285,6 +285,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="AppArcoreCalcar.Plugins.csproj">
+      <Project>{54EB4795-60FC-DD0B-EEFD-4FD56A803905}</Project>
+      <Name>AppArcoreCalcar.Plugins</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEditor.StandardEvents.csproj">
       <Project>{6800202F-4402-D405-F8CB-03DC7BD78B92}</Project>
       <Name>UnityEditor.StandardEvents</Name>

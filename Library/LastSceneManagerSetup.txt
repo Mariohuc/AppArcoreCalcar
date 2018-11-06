@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/CreatingGraphs/Scenes/MathSurfacesScene.unity
+- path: Assets/CreatingGraphs/Scenes/GraphARViewer.unity
   isLoaded: 1
   isActive: 1

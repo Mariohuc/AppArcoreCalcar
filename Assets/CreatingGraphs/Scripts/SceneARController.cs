@@ -2,7 +2,6 @@
 using GoogleARCore;
 using GoogleARCore.Examples.Common;
 using UnityEngine;
-using CreatingGraphs;
 
 
 public class SceneARController : MonoBehaviour {
@@ -27,7 +26,7 @@ public class SceneARController : MonoBehaviour {
 	/// </summary>
 	//public GameObject AndyPointPrefab;
 
-	public GraphAR graphs;
+	public VectorialSpace vectorial_space;
 
 	/// <summary>
 	/// A gameobject parenting UI for displaying the "searching for planes" snackbar.
@@ -108,6 +107,7 @@ public class SceneARController : MonoBehaviour {
 
 				// Instantiate Andy model at the hit pose.
 				//var andyObject = Instantiate(graphs, hit.Pose.position, hit.Pose.rotation);
+				/* HERE HERE HERE HERE --------------------------------------------------------------------------
 				var graphOject = graphs.ShowSurface();
 				graphOject.position = hit.Pose.position;
 				graphOject.rotation = hit.Pose.rotation;
@@ -121,6 +121,7 @@ public class SceneARController : MonoBehaviour {
 
 				// Make Andy model a child of the anchor.
 				graphOject.transform.parent = anchor.transform;
+				*/
 			}
 		}
 	}

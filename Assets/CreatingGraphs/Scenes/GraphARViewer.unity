@@ -622,10 +622,10 @@ RectTransform:
   m_Father: {fileID: 1387336312}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000002861, y: -93}
-  m_SizeDelta: {x: 272.6, y: 91.9}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000002861, y: 298}
+  m_SizeDelta: {x: 272.6, y: 91.899994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &479665608
 MonoBehaviour:
@@ -1078,10 +1078,10 @@ RectTransform:
   m_Father: {fileID: 1387336312}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.0000038147, y: -174}
-  m_SizeDelta: {x: 268.5, y: 37.1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0000038147, y: 217}
+  m_SizeDelta: {x: 268.5, y: 37.100006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &883297477
 MonoBehaviour:
@@ -1375,6 +1375,16 @@ Prefab:
       propertyPath: FunctionsListDropdown
       value: 
       objectReference: {fileID: 883297475}
+    - target: {fileID: 114307492668121342, guid: 9933e3dace20945429334c07f74f7535,
+        type: 2}
+      propertyPath: functionsListDropdown
+      value: 
+      objectReference: {fileID: 883297475}
+    - target: {fileID: 114307492668121342, guid: 9933e3dace20945429334c07f74f7535,
+        type: 2}
+      propertyPath: vectorialSpace
+      value: 
+      objectReference: {fileID: 1655607326}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9933e3dace20945429334c07f74f7535, type: 2}
   m_IsPrefabAsset: 0
@@ -1548,7 +1558,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphs: {fileID: 114615246921285126, guid: 9fba880a4a6d4ea40b4440c1c100b5fd, type: 2}
-  FunctionsListDropdown: {fileID: 883297475}
+  functionsListDropdown: {fileID: 883297475}
+  vectorialSpace: {fileID: 1655607326}
 --- !u!4 &1655607328
 Transform:
   m_ObjectHideFlags: 0

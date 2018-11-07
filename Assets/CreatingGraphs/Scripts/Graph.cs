@@ -31,7 +31,7 @@ public class Graph : MonoBehaviour {
 			point.SetParent(transform, false);
 			points[i] = point;
 		}
-		setFunction(FunctionName.Sine);
+		setFunction(FunctionName.Sine); // for default this graph start with SINE
 
 		foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		{

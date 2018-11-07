@@ -52,6 +52,8 @@ public class SceneARController : MonoBehaviour {
 	/// <summary>
 	/// The Unity Update() method.
 	/// </summary>
+	/// 
+	
 	public void Update()
 	{
 		_UpdateApplicationLifecycle();
@@ -98,30 +100,36 @@ public class SceneARController : MonoBehaviour {
 				//GameObject prefab;
 				//if (hit.Trackable is FeaturePoint)
 				//{
-					//prefab = AndyPointPrefab;
+				//prefab = AndyPointPrefab;
 				//}
 				//else
 				//{
-					//prefab = AndyPlanePrefab;
+				//prefab = AndyPlanePrefab;
 				//}
 
 				// Instantiate Andy model at the hit pose.
-				//var andyObject = Instantiate(graphs, hit.Pose.position, hit.Pose.rotation);
-				/* HERE HERE HERE HERE --------------------------------------------------------------------------
-				var graphOject = graphs.ShowSurface();
-				graphOject.position = hit.Pose.position;
-				graphOject.rotation = hit.Pose.rotation;
+				//var andyObject = Instantiate(vectorial_space, hit.Pose.position, hit.Pose.rotation);
+				//Transform vspace_current = vectorial_space.transform;
+				
+
+				vectorial_space.transform.position = hit.Pose.position;
+				vectorial_space.transform.rotation = hit.Pose.rotation;
 
 				// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-				graphOject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
+				vectorial_space.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
 
 				// Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
 				// world evolves.
 				var anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
 				// Make Andy model a child of the anchor.
-				graphOject.transform.parent = anchor.transform;
-				*/
+				vectorial_space.transform.parent = anchor.transform;
+				if (vectorial_space.isRendered() == false)
+				{
+					vectorial_space.showVectorialSpace();
+					vectorial_space.addSurface(); // for default it will add a first surface into the vectorial space.
+				}
+
 			}
 		}
 	}

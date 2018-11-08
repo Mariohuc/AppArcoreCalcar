@@ -1385,6 +1385,24 @@ Prefab:
       propertyPath: vectorialSpace
       value: 
       objectReference: {fileID: 1655607326}
+    - target: {fileID: 114307492668121342, guid: 9933e3dace20945429334c07f74f7535,
+        type: 2}
+      propertyPath: graph
+      value: 
+      objectReference: {fileID: 1253738876443498, guid: 9fba880a4a6d4ea40b4440c1c100b5fd,
+        type: 2}
+    - target: {fileID: 4030756865156944, guid: 9933e3dace20945429334c07f74f7535, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030756865156944, guid: 9933e3dace20945429334c07f74f7535, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030756865156944, guid: 9933e3dace20945429334c07f74f7535, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9933e3dace20945429334c07f74f7535, type: 2}
   m_IsPrefabAsset: 0
@@ -1557,7 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6298f5bef645f4cb462d1424233065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphs: {fileID: 114615246921285126, guid: 9fba880a4a6d4ea40b4440c1c100b5fd, type: 2}
+  graph: {fileID: 1253738876443498, guid: 9fba880a4a6d4ea40b4440c1c100b5fd, type: 2}
   functionsListDropdown: {fileID: 883297475}
   vectorialSpace: {fileID: 1655607326}
 --- !u!4 &1655607328
@@ -1569,7 +1587,7 @@ Transform:
   m_GameObject: {fileID: 1655607326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 640, y: 400, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8

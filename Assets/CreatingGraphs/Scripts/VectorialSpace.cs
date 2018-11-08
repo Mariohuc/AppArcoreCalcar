@@ -5,32 +5,30 @@ using UnityEngine.UI;
 
 public class VectorialSpace : MonoBehaviour {
 
-	private Vector3 origin;
-
-	public Graph graphs;
+	//private Vector3 origin;
+	public GameObject graph;
+	private Graph script_graph;
 	public Dropdown functionsListDropdown;
 
 	public GameObject vectorialSpace;
 
-	private List<Graph> graphsList = new List<Graph>();
+	private List<GameObject> graphsList = new List<GameObject>();
 
-	private int currentUpdated = 1;
+	//private int currentUpdated = 1;
 
-	private bool rendered_enable;
-	private Graph currentInstantiate = null;
+	private bool firstsurface;
+	private GameObject currentInstGraph = null;
 
 	// Use this for initialization
 	void Awake()
 	{
-		origin = new Vector3(0f, 0f, 0f);
+		//origin = new Vector3(0f, 0f, 0f);
 		functionsListDropdown.ClearOptions();
-		rendered_enable = false;
+		firstsurface = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		//{
 		//	r.enabled = false;
 		//}
-		
-
 	}
 
 	void Start()
@@ -41,39 +39,37 @@ public class VectorialSpace : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		
+		if (currentInstGraph != null)
+			currentInstGraph.transform.position = vectorialSpace.transform.position;
 	}
 
 	public void addSurface()
 	{
-		currentInstantiate = Instantiate(graphs, vectorialSpace.transform); // create a new instance where the parent is the vectorial space
-		graphsList.Add(currentInstantiate); // add the new instance into of graphList
-		currentInstantiate.showSurface(); // the new instance order render their childre component
+		currentInstGraph = Instantiate(graph, vectorialSpace.transform); // create a new instance where the parent is the vectorial space
+		graphsList.Add(currentInstGraph); // add the new instance into of graphList
+		//script_graph = currentInstGraph.GetComponent<Graph>();
 		List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
 		functionsListDropdown.AddOptions(options);
 
 		functionsListDropdown.onValueChanged.AddListener(delegate {
-			DropdownValueChanged(functionsListDropdown, currentInstantiate);
+			DropdownValueChanged(functionsListDropdown, currentInstGraph);
 		});
 	}
 
-	public Transform showVectorialSpace() {
-		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
-		//{
-		//	r.enabled = true;
-		//}
-		rendered_enable = true;
+	public Transform initDefultSurface() {
+		
+		firstsurface = true;
 		//addSurface(); // for default it will add a first surface into the vectorial space.
 		return this.transform;
 	}
 
-	public bool isRendered() {
-		return rendered_enable;
+	public bool isFirtDefaultSurface() {
+		return firstsurface;
 	}
 	//Ouput the new value of the Dropdown into Text
-	void DropdownValueChanged(Dropdown change, Graph currentInstantiate)
+	void DropdownValueChanged(Dropdown change, GameObject currentInstGraph)
 	{
-		if(currentInstantiate != null )
+		if(currentInstGraph != null )
 		{
 			FunctionName temp = FunctionName.Sine;
 			switch (change.value) {
@@ -102,7 +98,8 @@ public class VectorialSpace : MonoBehaviour {
 					break;
 			}
 
-			currentInstantiate.setFunction(temp);
+			script_graph = currentInstGraph.GetComponent<Graph>();
+			script_graph.setFunction(temp);
 		}
 	}
 }

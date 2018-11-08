@@ -124,9 +124,9 @@ public class SceneARController : MonoBehaviour {
 
 				// Make Andy model a child of the anchor.
 				vectorial_space.transform.parent = anchor.transform;
-				if (vectorial_space.isRendered() == false)
+				if (vectorial_space.isFirtDefaultSurface() == false)
 				{
-					vectorial_space.showVectorialSpace();
+					vectorial_space.initDefultSurface();
 					vectorial_space.addSurface(); // for default it will add a first surface into the vectorial space.
 				}
 

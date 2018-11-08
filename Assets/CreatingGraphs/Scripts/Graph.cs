@@ -33,10 +33,10 @@ public class Graph : MonoBehaviour {
 		}
 		setFunction(FunctionName.Sine); // for default this graph start with SINE
 
-		foreach (Renderer r in GetComponentsInChildren<Renderer>())
-		{
-			r.enabled = false;
-		}
+		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
+		//{
+		//	r.enabled = false;
+		//}
 	}
 
 
@@ -62,10 +62,10 @@ public class Graph : MonoBehaviour {
 
 	public Transform showSurface()
 	{
-		foreach (Renderer r in GetComponentsInChildren<Renderer>())
-		{
-			r.enabled = true;
-		}
+		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
+		//{
+		//	r.enabled = true;
+		//}
 
 		return this.transform;
 	}

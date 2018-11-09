@@ -16,15 +16,16 @@ public class VectorialSpace : MonoBehaviour {
 
 	//private int currentUpdated = 1;
 
-	private bool firstsurface;
+	public bool active;
 	private GameObject currentInstGraph = null;
+
 
 	// Use this for initialization
 	void Awake()
 	{
 		//origin = new Vector3(0f, 0f, 0f);
 		functionsListDropdown.ClearOptions();
-		firstsurface = false;
+		active = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		//{
 		//	r.enabled = false;
@@ -34,6 +35,19 @@ public class VectorialSpace : MonoBehaviour {
 	void Start()
 	{
 		
+	}
+
+	public bool Active //Get y set son accesores
+	{
+		get //Solo regresa valor
+		{
+			return active;
+		}
+
+		set //Setea valor
+		{
+			active = value;
+		}
 	}
 
 	// Update is called once per frame
@@ -56,16 +70,6 @@ public class VectorialSpace : MonoBehaviour {
 		});
 	}
 
-	public Transform initDefultSurface() {
-		
-		firstsurface = true;
-		//addSurface(); // for default it will add a first surface into the vectorial space.
-		return this.transform;
-	}
-
-	public bool isFirtDefaultSurface() {
-		return firstsurface;
-	}
 	//Ouput the new value of the Dropdown into Text
 	void DropdownValueChanged(Dropdown change, GameObject currentInstGraph)
 	{

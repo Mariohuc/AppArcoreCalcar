@@ -96,37 +96,27 @@ public class SceneARController : MonoBehaviour {
 			}
 			else
 			{
-				// Choose the Andy model for the Trackable that got hit.
-				//GameObject prefab;
-				//if (hit.Trackable is FeaturePoint)
-				//{
-				//prefab = AndyPointPrefab;
-				//}
-				//else
-				//{
-				//prefab = AndyPlanePrefab;
-				//}
-
+				
 				// Instantiate Andy model at the hit pose.
 				//var andyObject = Instantiate(vectorial_space, hit.Pose.position, hit.Pose.rotation);
 				//Transform vspace_current = vectorial_space.transform;
-				
 
-				vectorial_space.transform.position = hit.Pose.position;
-				vectorial_space.transform.rotation = hit.Pose.rotation;
-
-				// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-				vectorial_space.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-				// Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-				// world evolves.
-				var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-				// Make Andy model a child of the anchor.
-				vectorial_space.transform.parent = anchor.transform;
-				if (vectorial_space.isFirtDefaultSurface() == false)
+				if (vectorial_space.Active == false)
 				{
-					vectorial_space.initDefultSurface();
+					vectorial_space.transform.position = hit.Pose.position;
+					vectorial_space.transform.rotation = hit.Pose.rotation;
+
+					// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
+					vectorial_space.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
+
+					// Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
+					// world evolves.
+					var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+					// Make Andy model a child of the anchor.
+					vectorial_space.transform.parent = anchor.transform;
+				
+					vectorial_space.Active = true;
 					vectorial_space.addSurface(); // for default it will add a first surface into the vectorial space.
 				}
 

@@ -5,25 +5,28 @@ using UnityEngine.UI;
 
 public class VectorialSpace : MonoBehaviour {
 
-	//private Vector3 origin;
-	public GameObject graph;
+    private Vector3 origin;
+    private GameObject axes;
 	private Graph script_graph;
-	public Dropdown functionsListDropdown;
-
-	public GameObject vectorialSpace;
-
-	private List<GameObject> graphsList = new List<GameObject>();
-
+	private List<GameObject> graphsList;
 	//private int currentUpdated = 1;
+	private GameObject currentInstGraph;
 
 	public bool active;
-	private GameObject currentInstGraph = null;
+	public Dropdown functionsListDropdown;
 
+	public void setAxesGameObject( GameObject a) {
+		axes = a;
+	}
 
 	// Use this for initialization
 	void Awake()
 	{
-		//origin = new Vector3(0f, 0f, 0f);
+        origin = new Vector3(0f, 3.5f, 0f);
+        transform.localPosition = new Vector3(0f, 0f, 0f);// origin
+		axes = null;
+		currentInstGraph = null;
+		graphsList = new List<GameObject>();
 		functionsListDropdown.ClearOptions();
 		active = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
@@ -53,14 +56,17 @@ public class VectorialSpace : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if (currentInstGraph != null)
-			currentInstGraph.transform.position = vectorialSpace.transform.position;
+        if (currentInstGraph != null)
+            currentInstGraph.transform.localPosition = origin; // this.transform.localPosition;
+
+        if (axes != null)
+            axes.transform.localPosition = origin; // this.transform.localPosition;
 	}
 
-	public void addSurface()
+	public void addSurface(GameObject newsurface)
 	{
-		currentInstGraph = Instantiate(graph, vectorialSpace.transform); // create a new instance where the parent is the vectorial space
-		graphsList.Add(currentInstGraph); // add the new instance into of graphList
+		graphsList.Add(newsurface);
+		currentInstGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space
 		//script_graph = currentInstGraph.GetComponent<Graph>();
 		List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
 		functionsListDropdown.AddOptions(options);

@@ -17,15 +17,18 @@ public class SceneARController : MonoBehaviour {
 	public GameObject DetectedPlanePrefab;
 
 	/// <summary>
-	/// A model to place when a raycast from a user touch hits a plane.
+	/// A model
 	/// </summary>
-	//public GameObject AndyPlanePrefab;
+	public GameObject GraphPrefab;
 
 	/// <summary>
-	/// A model to place when a raycast from a user touch hits a feature point.
+	/// A model
 	/// </summary>
-	//public GameObject AndyPointPrefab;
+	public GameObject AxesPrefab;
 
+	/// <summary>
+	/// A model
+	/// </summary>
 	public VectorialSpace vectorial_space;
 
 	/// <summary>
@@ -95,8 +98,7 @@ public class SceneARController : MonoBehaviour {
 				Debug.Log("Hit at back of the current DetectedPlane");
 			}
 			else
-			{
-				
+			{				
 				// Instantiate Andy model at the hit pose.
 				//var andyObject = Instantiate(vectorial_space, hit.Pose.position, hit.Pose.rotation);
 				//Transform vspace_current = vectorial_space.transform;
@@ -115,9 +117,13 @@ public class SceneARController : MonoBehaviour {
 
 					// Make Andy model a child of the anchor.
 					vectorial_space.transform.parent = anchor.transform;
-				
+					
 					vectorial_space.Active = true;
-					vectorial_space.addSurface(); // for default it will add a first surface into the vectorial space.
+
+					GameObject newaxes= Instantiate(AxesPrefab, vectorial_space.transform);
+					vectorial_space.setAxesGameObject(newaxes);
+					GameObject newsurface = Instantiate(GraphPrefab, vectorial_space.transform);
+					vectorial_space.addSurface(newsurface);
 				}
 
 			}

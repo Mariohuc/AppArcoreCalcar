@@ -313,10 +313,13 @@
     <Compile Include="Assets\Codelab\Scripts\PlaneRenderer.cs" />
     <Compile Include="Assets\Codelab\Scripts\Slithering.cs" />
     <Compile Include="Assets\ConoGraphController.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\Axes.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\FunctionName.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\Functions.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\Graph.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\GraphFunction.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunction.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\Ellipsoid.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\SceneARController.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\VectorialSpace.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\AugmentedImage\Scripts\AugmentedImageExampleController.cs" />

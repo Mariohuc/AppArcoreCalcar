@@ -6,15 +6,22 @@ public class Graph : MonoBehaviour {
 
 	// Use this for initialization
 	public Transform pointPrefab;
-	//resolution
-	//[Range(10, 100)]
-	private int resolution = 80;
+    private RectTransform modifierParentPanel;
+
+
+    public RectTransform setModifierPanel;
+
+    //resolution
+    //[Range(10, 100)]
+    private int resolution = 80;
 
 	//public FunctionName function;
 
 	private Transform[] points;
 
 	private GraphFunction f;
+
+    private MathematicalFunction mathfunction;
 
 	void Awake()
 	{
@@ -31,7 +38,14 @@ public class Graph : MonoBehaviour {
 			point.SetParent(transform, false);
 			points[i] = point;
 		}
-		setFunction(FunctionName.Sine); // for default this graph start with SINE
+
+        //modifierParentPanel = GameObject.Find("ModifiersParentPanel").GetComponent<RectTransform>();
+
+        //if (modifierParentPanel == null) Application.Quit();  
+
+        //mathfunction = new Ellipsoid();
+
+        setFunction(FunctionName.Sine); // for default this graph start with SINE
 
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		//{

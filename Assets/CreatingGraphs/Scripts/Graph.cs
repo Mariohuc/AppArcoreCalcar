@@ -42,20 +42,23 @@ public class Graph : MonoBehaviour {
         //modifierParentPanel = GameObject.Find("ModifiersParentPanel").GetComponent<RectTransform>();
 
         //if (modifierParentPanel == null) Application.Quit();  
+     
+        //setFunction(FunctionName.Sine);
 
-        //mathfunction = new Ellipsoid();
+        //foreach (Renderer r in GetComponentsInChildren<Renderer>())
+        //{
+        //	r.enabled = false;
+        //}
+    }
 
-        setFunction(FunctionName.Sine); // for default this graph start with SINE
-
-		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
-		//{
-		//	r.enabled = false;
-		//}
-	}
+    private void Start()
+    {
+        mathfunction = new Ellipsoid(); // by default is a Ellipsoid
+    }
 
 
-	// Update is called once per frame
-	void Update() {
+    // Update is called once per frame
+    void Update() {
 		float t = Time.time;
 		//f = Functions.getFunction(function);
 		float step = 2f / resolution;
@@ -65,16 +68,20 @@ public class Graph : MonoBehaviour {
 			for (int x = 0; x < resolution; x++, i++)
 			{
 				float u = (x + 0.5f) * step - 1f;
-				points[i].localPosition = f(u, v, t);
+				points[i].localPosition = mathfunction.graph(u, v, t);
 			}
 		}
 	}
 
-	public void setFunction( FunctionName function) {
-		f = Functions.getFunction(function);
+	public void setFunction(FunctionName function) {
+        f = Functions.getFunction(function);
 	}
 
-	public Transform showSurface()
+    public MathematicalFunction getMathFunction() {
+        return mathfunction;
+    }
+
+    public Transform showSurface()
 	{
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		//{

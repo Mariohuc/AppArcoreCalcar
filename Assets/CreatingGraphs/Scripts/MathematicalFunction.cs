@@ -7,6 +7,6 @@ using UnityEngine.UI;
 public interface MathematicalFunction {
 
     Vector3 graph(float u, float v, float t);
-    string [] showParameterModifiers( );
+    Parameter [] getParameters( );
     void updateParameter(string parameter, float value);
 }

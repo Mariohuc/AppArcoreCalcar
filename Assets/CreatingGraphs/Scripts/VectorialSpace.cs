@@ -12,8 +12,9 @@ public class VectorialSpace : MonoBehaviour {
 	//private int currentUpdated = 1;
 	private GameObject currentInstGraph;
 
-	public bool active;
+	private bool active;
 	public Dropdown functionsListDropdown;
+    public GameObject modifierContainer;
 
 	public void setAxesGameObject( GameObject a) {
 		axes = a;
@@ -71,10 +72,47 @@ public class VectorialSpace : MonoBehaviour {
 		List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
 		functionsListDropdown.AddOptions(options);
 
-		functionsListDropdown.onValueChanged.AddListener(delegate {
+        updateParameterModifiers();
+
+        functionsListDropdown.onValueChanged.AddListener(delegate {
 			DropdownValueChanged(functionsListDropdown, currentInstGraph);
 		});
-	}
+
+        
+
+    }
+
+
+    void updateParameterModifiers() {
+        // extract panels
+        script_graph = currentInstGraph.GetComponent<Graph>();
+        MathematicalFunction mathFunctionTemp = script_graph.getMathFunction(); // function
+        Parameter[] parametersTemp = mathFunctionTemp.getParameters();
+        RectTransform[] modifiers = modifierContainer.GetComponentsInChildren<RectTransform>();
+        string[] parameter = { "a", "b", "c" };
+        for (int i = 0; i < 3 ; i++)
+        {
+            if (modifiers[i].name.Equals("Text")) continue;
+            InputField inputValue = modifiers[i].GetComponentInChildren<InputField>();
+            Slider slider = modifiers[i].GetComponentInChildren<Slider>();      
+            slider.minValue = parametersTemp[i].MinValue;
+            slider.maxValue = parametersTemp[i].MaxValue;
+            slider.value = parametersTemp[i].Value;
+            slider.name = parameter[i];
+            inputValue.text = parametersTemp[i].Value.ToString();
+
+            slider.onValueChanged.AddListener(delegate {
+      
+                mathFunctionTemp.updateParameter(slider.name, slider.value);
+                inputValue.text = slider.value.ToString();
+
+            });
+        }
+
+        
+
+    }
+
 
 	//Ouput the new value of the Dropdown into Text
 	void DropdownValueChanged(Dropdown change, GameObject currentInstGraph)

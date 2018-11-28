@@ -67,4 +67,18 @@ public class Ellipsoid : MathematicalFunction {
         }
     }
 
+    public Parameter getParameterByName(string name) {
+        foreach (Parameter a in getParameters())
+        {
+            if (a.Name.Equals(name))
+                return a;
+        }
+           
+        return null;
+    }
+
+    public Slider [] foo(Slider a) {
+        a.value = 34f;
+        return null;
+    }
 }

@@ -1,15 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Graph : MonoBehaviour {
 
 	// Use this for initialization
 	public Transform pointPrefab;
     private RectTransform modifierParentPanel;
-
-
-    public RectTransform setModifierPanel;
 
     //resolution
     //[Range(10, 100)]
@@ -21,9 +19,29 @@ public class Graph : MonoBehaviour {
 
 	private GraphFunction f;
 
-    private MathematicalFunction mathfunction;
+    private MathFunctionUI mathFunctionUIManager;
 
-	void Awake()
+    public Button parameterSelectButton; // public 
+
+    private Image parameterListContainerGraph;
+    private Image parameterUpdaterViewportGraph; //IT must have a Text , a InputField and a Slider
+
+
+
+    public Image ParameterListContainerGraph  // it must asign in vectorial space
+    {
+        set { parameterListContainerGraph = value; }
+        get { return parameterListContainerGraph; }
+    }
+
+    public Image ParameterUpdaterViewportGraph // it must asign in vectorial space
+    {
+        set { parameterUpdaterViewportGraph = value; }
+        get { return parameterUpdaterViewportGraph; }
+    }
+
+
+    void Awake()
 	{
 		float step = 2f / resolution;
 		Vector3 scale = Vector3.one * step;
@@ -38,11 +56,12 @@ public class Graph : MonoBehaviour {
 			point.SetParent(transform, false);
 			points[i] = point;
 		}
-
+        mathFunctionUIManager = new MathFunctionUI();
+        mathFunctionUIManager.MathFunction = new Ellipsoid();
         //modifierParentPanel = GameObject.Find("ModifiersParentPanel").GetComponent<RectTransform>();
 
         //if (modifierParentPanel == null) Application.Quit();  
-     
+
         //setFunction(FunctionName.Sine);
 
         //foreach (Renderer r in GetComponentsInChildren<Renderer>())
@@ -51,14 +70,26 @@ public class Graph : MonoBehaviour {
         //}
     }
 
-    private void Start()
-    {
-        mathfunction = new Ellipsoid(); // by default is a Ellipsoid
+    public void setGraphMathFunction() {
+        if (ParameterListContainerGraph == null || ParameterUpdaterViewportGraph == null)
+            return;
+     
+        mathFunctionUIManager.ParameterListContainer = ParameterListContainerGraph;
+        mathFunctionUIManager.ParameterUpdaterViewport = ParameterUpdaterViewportGraph;
+        mathFunctionUIManager.ParameterSelectButton = parameterSelectButton;
+        //mathFunctionUIManager.MathFunction = VARIABLECONTAINER.getChosenFunction();
+       
+        mathFunctionUIManager.putParameterButtonInContainer();
     }
 
+    private void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update() {
+
 		float t = Time.time;
 		//f = Functions.getFunction(function);
 		float step = 2f / resolution;
@@ -68,8 +99,9 @@ public class Graph : MonoBehaviour {
 			for (int x = 0; x < resolution; x++, i++)
 			{
 				float u = (x + 0.5f) * step - 1f;
-				points[i].localPosition = mathfunction.graph(u, v, t);
-			}
+				points[i].localPosition = mathFunctionUIManager.graph(u, v, t);
+                //points[i].localPosition = f(u, v, t);
+            }
 		}
 	}
 
@@ -78,7 +110,7 @@ public class Graph : MonoBehaviour {
 	}
 
     public MathematicalFunction getMathFunction() {
-        return mathfunction;
+        return mathFunctionUIManager.MathFunction;
     }
 
     public Transform showSurface()

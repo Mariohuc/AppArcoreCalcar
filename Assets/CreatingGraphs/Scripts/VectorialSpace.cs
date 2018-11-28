@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class VectorialSpace : MonoBehaviour {
 
     private Vector3 origin;
     private GameObject axes;
-	private Graph script_graph;
+	private Graph _GRAPH_SCRIPT;
 	private List<GameObject> graphsList;
 	//private int currentUpdated = 1;
 	private GameObject currentInstGraph;
 
 	private bool active;
 	public Dropdown functionsListDropdown;
-    public GameObject modifierContainer;
 
-	public void setAxesGameObject( GameObject a) {
+    public Image parameterListContainerGraph;
+    public Image parameterUpdaterViewportGraph; //IT must have a Text , a InputField and a Slider
+
+    public void setAxesGameObject( GameObject a) {
 		axes = a;
 	}
 
@@ -68,48 +72,22 @@ public class VectorialSpace : MonoBehaviour {
 	{
 		graphsList.Add(newsurface);
 		currentInstGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space
-		//script_graph = currentInstGraph.GetComponent<Graph>();
-		List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
+		_GRAPH_SCRIPT = currentInstGraph.GetComponent<Graph>();
+
+        _GRAPH_SCRIPT.ParameterListContainerGraph = parameterListContainerGraph;
+        _GRAPH_SCRIPT.ParameterUpdaterViewportGraph = parameterUpdaterViewportGraph;
+        _GRAPH_SCRIPT.setGraphMathFunction();
+
+        List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
 		functionsListDropdown.AddOptions(options);
 
-        updateParameterModifiers();
 
         functionsListDropdown.onValueChanged.AddListener(delegate {
-			DropdownValueChanged(functionsListDropdown, currentInstGraph);
-		});
+            DropdownValueChanged(functionsListDropdown, currentInstGraph);
+        });
 
         
-
-    }
-
-
-    void updateParameterModifiers() {
-        // extract panels
-        script_graph = currentInstGraph.GetComponent<Graph>();
-        MathematicalFunction mathFunctionTemp = script_graph.getMathFunction(); // function
-        Parameter[] parametersTemp = mathFunctionTemp.getParameters();
-        RectTransform[] modifiers = modifierContainer.GetComponentsInChildren<RectTransform>();
-        string[] parameter = { "a", "b", "c" };
-        for (int i = 0; i < 3 ; i++)
-        {
-            if (modifiers[i].name.Equals("Text")) continue;
-            InputField inputValue = modifiers[i].GetComponentInChildren<InputField>();
-            Slider slider = modifiers[i].GetComponentInChildren<Slider>();      
-            slider.minValue = parametersTemp[i].MinValue;
-            slider.maxValue = parametersTemp[i].MaxValue;
-            slider.value = parametersTemp[i].Value;
-            slider.name = parameter[i];
-            inputValue.text = parametersTemp[i].Value.ToString();
-
-            slider.onValueChanged.AddListener(delegate {
-      
-                mathFunctionTemp.updateParameter(slider.name, slider.value);
-                inputValue.text = slider.value.ToString();
-
-            });
-        }
-
-        
+     
 
     }
 
@@ -146,8 +124,8 @@ public class VectorialSpace : MonoBehaviour {
 					break;
 			}
 
-			script_graph = currentInstGraph.GetComponent<Graph>();
-			script_graph.setFunction(temp);
+			_GRAPH_SCRIPT = currentInstGraph.GetComponent<Graph>();
+			_GRAPH_SCRIPT.setFunction(temp);
 		}
 	}
 }

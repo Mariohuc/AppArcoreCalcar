@@ -321,6 +321,7 @@
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunction.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\Ellipsoid.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\Parameter.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\MathFunctionUI.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\SceneARController.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\VectorialSpace.cs" />
     <Compile Include="Assets\GoogleARCore\Examples\AugmentedImage\Scripts\AugmentedImageExampleController.cs" />

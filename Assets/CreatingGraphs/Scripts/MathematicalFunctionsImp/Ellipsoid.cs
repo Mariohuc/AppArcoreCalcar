@@ -13,19 +13,19 @@ public class Ellipsoid : MathematicalFunction {
     public Ellipsoid() {
 
         a = new Parameter();
-        a.Name = "a";
+        a.Name = "Semi-eje a";
         a.Value = 2f;
         a.MinValue = 0.5f;
         a.MaxValue = 2.5f;
 
         b = new Parameter();
-        b.Name = "b";
+        b.Name = "Semi-eje b";
         b.Value = 1.2f;
         b.MinValue = 0.5f;
         b.MaxValue = 2.5f;
 
         c = new Parameter();
-        c.Name = "c";
+        c.Name = "Semi-eje c";
         c.Value = 0.6f;
         c.MinValue = 0.5f;
         c.MaxValue = 2.5f;
@@ -68,13 +68,14 @@ public class Ellipsoid : MathematicalFunction {
     }
 
     public Parameter getParameterByName(string name) {
-        foreach (Parameter a in getParameters())
+        Parameter a = null;
+        foreach ( Parameter temp in getParameters())
         {
-            if (a.Name.Equals(name))
-                return a;
+            if (temp.Name.Equals(name))
+                a = temp;
         }
            
-        return null;
+        return a;
     }
 
     public Slider [] foo(Slider a) {

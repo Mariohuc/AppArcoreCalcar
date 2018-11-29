@@ -12,13 +12,10 @@ public class VectorialSpace : MonoBehaviour {
 	private Graph _GRAPH_SCRIPT;
 	private List<GameObject> graphsList;
 	//private int currentUpdated = 1;
-	private GameObject currentInstGraph;
+	private GameObject currentSelectedtGraph;
 
 	private bool active;
-	public Dropdown functionsListDropdown;
 
-    public Image parameterListContainerGraph;
-    public Image parameterUpdaterViewportGraph; //IT must have a Text , a InputField and a Slider
 
     public void setAxesGameObject( GameObject a) {
 		axes = a;
@@ -30,9 +27,8 @@ public class VectorialSpace : MonoBehaviour {
         origin = new Vector3(0f, 3.5f, 0f);
         transform.localPosition = new Vector3(0f, 0f, 0f);// origin
 		axes = null;
-		currentInstGraph = null;
+		currentSelectedtGraph = null;
 		graphsList = new List<GameObject>();
-		functionsListDropdown.ClearOptions();
 		active = false;
 		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
 		//{
@@ -44,6 +40,11 @@ public class VectorialSpace : MonoBehaviour {
 	{
 		
 	}
+
+    public GameObject currentSelectedGraph {
+        get { return currentSelectedtGraph; }
+        set { currentSelectedtGraph = value;  }
+    }
 
 	public bool Active //Get y set son accesores
 	{
@@ -61,8 +62,8 @@ public class VectorialSpace : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-        if (currentInstGraph != null)
-            currentInstGraph.transform.localPosition = origin; // this.transform.localPosition;
+        if (currentSelectedtGraph != null)
+            currentSelectedtGraph.transform.localPosition = origin; // this.transform.localPosition;
 
         if (axes != null)
             axes.transform.localPosition = origin; // this.transform.localPosition;
@@ -71,21 +72,17 @@ public class VectorialSpace : MonoBehaviour {
 	public void addSurface(GameObject newsurface)
 	{
 		graphsList.Add(newsurface);
-		currentInstGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space
-		_GRAPH_SCRIPT = currentInstGraph.GetComponent<Graph>();
-
-        _GRAPH_SCRIPT.ParameterListContainerGraph = parameterListContainerGraph;
-        _GRAPH_SCRIPT.ParameterUpdaterViewportGraph = parameterUpdaterViewportGraph;
-        _GRAPH_SCRIPT.setGraphMathFunction();
-
+		currentSelectedtGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space
+		_GRAPH_SCRIPT = currentSelectedtGraph.GetComponent<Graph>();
+        /*
         List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
 		functionsListDropdown.AddOptions(options);
 
 
         functionsListDropdown.onValueChanged.AddListener(delegate {
-            DropdownValueChanged(functionsListDropdown, currentInstGraph);
+            DropdownValueChanged(functionsListDropdown, currentSelectedtGraph);
         });
-
+        */
         
      
 

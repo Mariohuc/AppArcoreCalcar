@@ -19,26 +19,8 @@ public class Graph : MonoBehaviour {
 
 	private GraphFunction f;
 
-    private MathFunctionUI mathFunctionUIManager;
+    private MathematicalFunction mathFunction;
 
-    public Button parameterSelectButton; // public 
-
-    private Image parameterListContainerGraph;
-    private Image parameterUpdaterViewportGraph; //IT must have a Text , a InputField and a Slider
-
-
-
-    public Image ParameterListContainerGraph  // it must asign in vectorial space
-    {
-        set { parameterListContainerGraph = value; }
-        get { return parameterListContainerGraph; }
-    }
-
-    public Image ParameterUpdaterViewportGraph // it must asign in vectorial space
-    {
-        set { parameterUpdaterViewportGraph = value; }
-        get { return parameterUpdaterViewportGraph; }
-    }
 
 
     void Awake()
@@ -56,8 +38,9 @@ public class Graph : MonoBehaviour {
 			point.SetParent(transform, false);
 			points[i] = point;
 		}
-        mathFunctionUIManager = new MathFunctionUI();
-        mathFunctionUIManager.MathFunction = new Ellipsoid();
+        
+        //mathFunctionUIManager.MathFunction = new Ellipsoid();
+        setMathFunction( MathFunctionManagerUI.getSceneMathFunction() );
         //modifierParentPanel = GameObject.Find("ModifiersParentPanel").GetComponent<RectTransform>();
 
         //if (modifierParentPanel == null) Application.Quit();  
@@ -70,17 +53,6 @@ public class Graph : MonoBehaviour {
         //}
     }
 
-    public void setGraphMathFunction() {
-        if (ParameterListContainerGraph == null || ParameterUpdaterViewportGraph == null)
-            return;
-     
-        mathFunctionUIManager.ParameterListContainer = ParameterListContainerGraph;
-        mathFunctionUIManager.ParameterUpdaterViewport = ParameterUpdaterViewportGraph;
-        mathFunctionUIManager.ParameterSelectButton = parameterSelectButton;
-        //mathFunctionUIManager.MathFunction = VARIABLECONTAINER.getChosenFunction();
-       
-        mathFunctionUIManager.putParameterButtonInContainer();
-    }
 
     private void Start()
     {
@@ -99,7 +71,7 @@ public class Graph : MonoBehaviour {
 			for (int x = 0; x < resolution; x++, i++)
 			{
 				float u = (x + 0.5f) * step - 1f;
-				points[i].localPosition = mathFunctionUIManager.graph(u, v, t);
+				points[i].localPosition = mathFunction.graph(u, v, t);
                 //points[i].localPosition = f(u, v, t);
             }
 		}
@@ -109,8 +81,13 @@ public class Graph : MonoBehaviour {
         f = Functions.getFunction(function);
 	}
 
+    public void setMathFunction(MathematicalFunction m)
+    {
+        mathFunction = m;
+    }
+
     public MathematicalFunction getMathFunction() {
-        return mathFunctionUIManager.MathFunction;
+        return mathFunction;
     }
 
     public Transform showSurface()

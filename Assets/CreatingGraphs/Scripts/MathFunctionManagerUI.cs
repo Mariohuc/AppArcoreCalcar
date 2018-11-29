@@ -26,7 +26,7 @@ public class MathFunctionManagerUI : MonoBehaviour {
     // Use this for initialization
     void Awake()
     {
-        setSceneMathFunction( new Ellipsoid() );
+        setSceneMathFunction( ContextFunctions.SelectedFunction );
 
         _PARAMETER_TEXT = parameterUpdaterViewport.transform.Find("ParameterDescriptionText").GetComponent<Text>();
         _PARAMETER_INPUTFIELD = parameterUpdaterViewport.transform.Find("CurrentValueInputField").GetComponent<InputField>();

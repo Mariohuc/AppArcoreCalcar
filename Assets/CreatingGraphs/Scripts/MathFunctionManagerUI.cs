@@ -10,10 +10,14 @@ public class MathFunctionManagerUI : MonoBehaviour {
     public Image parameterListContainer;
     public Button parameterSelectButton;
     public Image parameterUpdaterViewport; //IT must have a Text , a InputField and a Slider
+    public Slider _PARAMETER_SLIDER; // To change the parameter value
+    public Button goBack;
+    public Image surfaceEquationUI;
 
     private Text _PARAMETER_TEXT;
     private InputField _PARAMETER_INPUTFIELD;
-    private Slider _PARAMETER_SLIDER;
+
+    
 
     private static MathematicalFunction sceneMathFunction;
 
@@ -30,9 +34,9 @@ public class MathFunctionManagerUI : MonoBehaviour {
 
         _PARAMETER_TEXT = parameterUpdaterViewport.transform.Find("ParameterDescriptionText").GetComponent<Text>();
         _PARAMETER_INPUTFIELD = parameterUpdaterViewport.transform.Find("CurrentValueInputField").GetComponent<InputField>();
-        _PARAMETER_SLIDER = parameterUpdaterViewport.transform.Find("ValuesSlider").GetComponent<Slider>();
 
         _VS_SCRIPT = _vectorialspace.GetComponent<VectorialSpace>();
+        goBack.onClick.AddListener(() => SceneManager.LoadScene("FunctionSelectionView")  );
 
     }
 
@@ -67,6 +71,8 @@ public class MathFunctionManagerUI : MonoBehaviour {
                 _buttonTemp.onClick.AddListener(() => setUpParameterUpdaterViewport(sceneMathFunction, _PARAMETER_TEXT, _PARAMETER_INPUTFIELD, _PARAMETER_SLIDER));
             }
             areParametersButtons = true;
+
+            surfaceEquationUI.sprite = Resources.Load<Sprite>("Sprites/"+ sceneMathFunction.getFunctionName());
         }
     }
 
@@ -108,8 +114,5 @@ public class MathFunctionManagerUI : MonoBehaviour {
         _updatedinput.text = eventSlider.value.ToString();
     }
 
-
-
-	
 	
 }

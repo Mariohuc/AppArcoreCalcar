@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public interface MathematicalFunction {
-
+public interface MathematicalFunction
+{
+    string getFunctionName();
     Vector3 graph(float u, float v, float t);
-    Parameter [] getParameters( );
+    Parameter[] getParameters();
     Parameter getParameterByName(string name);
     void updateParameter(string parameter, float value);
-    Slider [] foo(Slider s);
 }

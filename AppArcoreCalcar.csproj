@@ -315,13 +315,11 @@
     <Compile Include="Assets\ConoGraphController.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\Axes.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\ContextFunctions.cs" />
-    <Compile Include="Assets\CreatingGraphs\Scripts\FunctionName.cs" />
-    <Compile Include="Assets\CreatingGraphs\Scripts\Functions.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\FunctionSelectionManagerUI.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\Graph.cs" />
-    <Compile Include="Assets\CreatingGraphs\Scripts\GraphFunction.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunction.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\Ellipsoid.cs" />
+    <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\OneSheetedHyperboloid.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathematicalFunctionsImp\Parameter.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\MathFunctionManagerUI.cs" />
     <Compile Include="Assets\CreatingGraphs\Scripts\SceneARController.cs" />

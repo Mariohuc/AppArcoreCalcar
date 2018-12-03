@@ -32,7 +32,11 @@ public class FunctionSelectionManagerUI : MonoBehaviour {
             ContextFunctions.SelectedFunction = new Ellipsoid();
             SceneManager.LoadScene("GraphARViewer");
         }
-            
-        
+        if (FUNCTIONNAME.Equals("HD1HButton"))
+        {
+            ContextFunctions.SelectedFunction = new OneSheetedHyperboloid();
+            SceneManager.LoadScene("GraphARViewer");
+        }
+       
     }
 }

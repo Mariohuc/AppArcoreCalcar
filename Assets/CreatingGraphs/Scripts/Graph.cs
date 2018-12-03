@@ -11,13 +11,11 @@ public class Graph : MonoBehaviour {
 
     //resolution
     //[Range(10, 100)]
-    private int resolution = 80;
+    private int resolution = 100;
 
 	//public FunctionName function;
 
 	private Transform[] points;
-
-	private GraphFunction f;
 
     private MathematicalFunction mathFunction;
 
@@ -39,25 +37,14 @@ public class Graph : MonoBehaviour {
 			points[i] = point;
 		}
         
-        //mathFunctionUIManager.MathFunction = new Ellipsoid();
         setMathFunction( MathFunctionManagerUI.getSceneMathFunction() );
         //modifierParentPanel = GameObject.Find("ModifiersParentPanel").GetComponent<RectTransform>();
 
-        //if (modifierParentPanel == null) Application.Quit();  
-
-        //setFunction(FunctionName.Sine);
-
-        //foreach (Renderer r in GetComponentsInChildren<Renderer>())
-        //{
-        //	r.enabled = false;
-        //}
     }
 
 
-    private void Start()
-    {
-        
-    }
+    void Start()
+    {}
 
     // Update is called once per frame
     void Update() {
@@ -77,10 +64,6 @@ public class Graph : MonoBehaviour {
 		}
 	}
 
-	public void setFunction(FunctionName function) {
-        f = Functions.getFunction(function);
-	}
-
     public void setMathFunction(MathematicalFunction m)
     {
         mathFunction = m;
@@ -92,11 +75,6 @@ public class Graph : MonoBehaviour {
 
     public Transform showSurface()
 	{
-		//foreach (Renderer r in GetComponentsInChildren<Renderer>())
-		//{
-		//	r.enabled = true;
-		//}
-
 		return this.transform;
 	}
 }

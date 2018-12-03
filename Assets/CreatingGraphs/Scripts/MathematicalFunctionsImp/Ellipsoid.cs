@@ -10,28 +10,31 @@ public class Ellipsoid : MathematicalFunction {
     private Parameter b;
     private Parameter c;
 
+    private string functionName = "Ellipsoid";
     public Ellipsoid() {
 
         a = new Parameter();
-        a.Name = "Semi-eje a";
+        a.Name = "Semi-eje [a]";
         a.Value = 2f;
         a.MinValue = 0.5f;
         a.MaxValue = 2.5f;
 
         b = new Parameter();
-        b.Name = "Semi-eje b";
+        b.Name = "Semi-eje [b]";
         b.Value = 1.2f;
         b.MinValue = 0.5f;
         b.MaxValue = 2.5f;
 
         c = new Parameter();
-        c.Name = "Semi-eje c";
+        c.Name = "Semi-eje [c]";
         c.Value = 0.6f;
         c.MinValue = 0.5f;
         c.MaxValue = 2.5f;
     }
 
-
+    public string getFunctionName() {
+        return functionName;
+    }
     public Vector3 graph(float u, float v, float t)
     {
         Vector3 p;
@@ -78,8 +81,4 @@ public class Ellipsoid : MathematicalFunction {
         return a;
     }
 
-    public Slider [] foo(Slider a) {
-        a.value = 34f;
-        return null;
-    }
 }

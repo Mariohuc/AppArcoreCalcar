@@ -9,17 +9,18 @@ public class VectorialSpace : MonoBehaviour {
 
     private Vector3 origin;
     private GameObject axes;
-	private Graph _GRAPH_SCRIPT;
 	private List<GameObject> graphsList;
 	//private int currentUpdated = 1;
 	private GameObject currentSelectedtGraph;
 
 	private bool active;
+    private bool IsTheCurrentGraphPlaced = false;
 
 
     public void setAxesGameObject( GameObject a) {
 		axes = a;
-	}
+        axes.transform.localPosition = origin;
+    }
 
 	// Use this for initialization
 	void Awake()
@@ -62,67 +63,17 @@ public class VectorialSpace : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-        if (currentSelectedtGraph != null)
+        if (currentSelectedtGraph != null && IsTheCurrentGraphPlaced == false)
+        {
             currentSelectedtGraph.transform.localPosition = origin; // this.transform.localPosition;
-
-        if (axes != null)
-            axes.transform.localPosition = origin; // this.transform.localPosition;
+            IsTheCurrentGraphPlaced = true;
+        }
 	}
 
 	public void addSurface(GameObject newsurface)
 	{
 		graphsList.Add(newsurface);
-		currentSelectedtGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space
-		_GRAPH_SCRIPT = currentSelectedtGraph.GetComponent<Graph>();
-        /*
-        List<string> options = new List < string > {"Sine","Sine2D","MultiSine","MultiSine2D","Ripple","Cylinder","Sphere","Torus" };
-		functionsListDropdown.AddOptions(options);
-
-
-        functionsListDropdown.onValueChanged.AddListener(delegate {
-            DropdownValueChanged(functionsListDropdown, currentSelectedtGraph);
-        });
-        */
-        
-     
-
+		currentSelectedtGraph = graphsList[graphsList.Count-1]; // create a new instance where the parent is the vectorial space 
     }
 
-
-	//Ouput the new value of the Dropdown into Text
-	void DropdownValueChanged(Dropdown change, GameObject currentInstGraph)
-	{
-		if(currentInstGraph != null )
-		{
-			FunctionName temp = FunctionName.Sine;
-			switch (change.value) {
-				case 0: temp = FunctionName.Sine;
-					break;
-				case 1:
-					temp = FunctionName.Sine2D;
-					break;
-				case 2:
-					temp = FunctionName.MultiSine;
-					break;
-				case 3:
-					temp = FunctionName.MultiSine2D;
-					break;
-				case 4:
-					temp = FunctionName.Ripple;
-					break;
-				case 5:
-					temp = FunctionName.Cylinder;
-					break;
-				case 6:
-					temp = FunctionName.Sphere;
-					break;
-				case 7:
-					temp = FunctionName.Torus;
-					break;
-			}
-
-			_GRAPH_SCRIPT = currentInstGraph.GetComponent<Graph>();
-			_GRAPH_SCRIPT.setFunction(temp);
-		}
-	}
 }

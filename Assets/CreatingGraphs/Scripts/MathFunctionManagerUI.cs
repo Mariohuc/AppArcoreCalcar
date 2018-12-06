@@ -12,7 +12,8 @@ public class MathFunctionManagerUI : MonoBehaviour {
     public Image parameterUpdaterViewport; //IT must have a Text , a InputField and a Slider
     public Slider _PARAMETER_SLIDER; // To change the parameter value
     public Button goBack;
-    public Image surfaceEquationUI;
+    public Image surfaceEquationImage;
+    public Text surfaceEquationText;
 
     private Text _PARAMETER_TEXT;
     private InputField _PARAMETER_INPUTFIELD;
@@ -72,7 +73,8 @@ public class MathFunctionManagerUI : MonoBehaviour {
             }
             areParametersButtons = true;
 
-            surfaceEquationUI.sprite = Resources.Load<Sprite>("Sprites/"+ sceneMathFunction.getFunctionName());
+            surfaceEquationImage.sprite = Resources.Load<Sprite>("Sprites/"+ sceneMathFunction.getFunctionName());
+            surfaceEquationText.text = sceneMathFunction.getFunctionName();
         }
     }
 

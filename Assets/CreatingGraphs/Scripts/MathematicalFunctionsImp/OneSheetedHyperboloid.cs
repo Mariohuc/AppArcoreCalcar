@@ -8,7 +8,7 @@ public class OneSheetedHyperboloid : MathematicalFunction {
     private Parameter a;
     private Parameter c;
 
-    private string functionName = "One Sheeted Hyperboloid";
+    private string functionName = "Hiperboloide de una Hoja";
 
     public OneSheetedHyperboloid()
     {

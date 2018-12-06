@@ -10,7 +10,7 @@ public class Ellipsoid : MathematicalFunction {
     private Parameter b;
     private Parameter c;
 
-    private string functionName = "Ellipsoid";
+    private string functionName = "Elipsoide";
     public Ellipsoid() {
 
         a = new Parameter();
